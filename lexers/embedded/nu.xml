@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <lexer>
   <config>
     <name>Nu</name>
@@ -8,184 +8,198 @@
   </config>
   <rules>
     <state name="root">
-      <rule include="basic"></rule>
-      <rule include="data"></rule>
+      <rule include="basic" />
+      <rule include="data" />
     </state>
     <state name="basic">
       <rule pattern="\A#!.+\n">
-        <token type="CommentHashbang"></token>
+        <token type="CommentHashbang" />
       </rule>
       <rule pattern="#.*\n">
-        <token type="CommentSingle"></token>
+        <token type="CommentSingle" />
       </rule>
-      <rule pattern="(\b(export-env|source-env|continue|hide-env|let-env|overlay|source|return|export|extern|module|error|break|while|const|alias|catch|match|make|loop|list|hide|else|use|let|try|for|def|new|mut|if|do|in|as)\b)(\s*)">
+      <rule
+        pattern="\b(export-env|source-env|continue|hide-env|let-env|overlay|source|return|export|extern|module|error|break|while|const|alias|catch|match|make|loop|list|hide|else|use|let|try|for|def|new|mut|if|do|in|as)\b(\s*)"
+      >
         <bygroups>
-          <token type="Keyword"></token>
-          <token type="TextWhitespace"></token>
+          <token type="Keyword" />
+          <token type="TextWhitespace" />
         </bygroups>
       </rule>
-      <rule pattern="(\b(nu-highlight|run-external|is-not-empty|keybindings|is-terminal|interleave|export-env|enumerate|histogram|transpose|generate|split-by|par-each|with-env|complete|nu-check|metadata|load-env|is-empty|group-by|let-env|flatten|uniq-by|columns|compact|collect|reverse|inspect|history|headers|shuffle|explain|explore|sort-by|prepend|default|rename|append|plugin|random|format|filter|timeit|ulimit|config|reduce|mktemp|decode|upsert|values|reject|detect|select|update|insert|length|encode|schema|rotate|window|whoami|touch|mkdir|which|debug|bytes|clear|tutor|lines|input|every|where|merge|first|items|group|sleep|range|watch|split|start|panic|uname|parse|query|table|print|math|uniq|wrap|path|open|ansi|move|bits|view|last|char|roll|kill|join|save|into|http|date|hash|skip|grid|sort|glob|port|from|drop|stor|each|exec|find|take|exit|term|fill|url|ast|sys|str|zip|fmt|get|dfr|seq|any|tee|all|cal|cd|to|rm|ls|cp|mv|ps|du)\b)(\s*)">
+      <rule
+        pattern="\b(nu-highlight|run-external|is-not-empty|keybindings|is-terminal|interleave|export-env|enumerate|histogram|transpose|generate|split-by|par-each|with-env|complete|nu-check|metadata|load-env|is-empty|group-by|let-env|flatten|uniq-by|columns|compact|collect|reverse|inspect|history|headers|shuffle|explain|explore|sort-by|prepend|default|rename|append|plugin|random|format|filter|timeit|ulimit|config|reduce|mktemp|decode|upsert|values|reject|detect|select|update|insert|length|encode|schema|rotate|window|whoami|touch|mkdir|which|debug|bytes|clear|tutor|lines|input|every|where|merge|first|items|group|sleep|range|watch|split|start|panic|uname|parse|query|table|print|math|uniq|wrap|path|open|ansi|move|bits|view|last|char|roll|kill|join|save|into|http|date|hash|skip|grid|sort|glob|port|from|drop|stor|each|exec|find|take|exit|term|fill|url|ast|sys|str|zip|fmt|get|dfr|seq|any|tee|all|cal|cd|to|rm|ls|cp|mv|ps|du)\b(\s*)"
+      >
         <bygroups>
-          <token type="NameBuiltin"></token>
-          <token type="TextWhitespace"></token>
+          <token type="NameBuiltin" />
+          <token type="TextWhitespace" />
         </bygroups>
       </rule>
-      <rule pattern="(\b(nothing|false|true|null)\b)(\s*)">
+      <rule pattern="\b(nothing|false|true|null)\b(\s*)">
         <bygroups>
-          <token type="KeywordConstant"></token>
-          <token type="TextWhitespace"></token>
+          <token type="KeywordConstant" />
+          <token type="TextWhitespace" />
         </bygroups>
       </rule>
       <rule pattern="(\^)(\w+)">
         <bygroups>
-          <token type="Operator"></token>
-          <token type="NameFunction"></token>
+          <token type="Operator" />
+          <token type="NameFunction" />
         </bygroups>
       </rule>
       <rule pattern="(def|alias)(\s+)(\w+)">
         <bygroups>
-          <token type="Keyword"></token>
-          <token type="TextWhitespace"></token>
-          <token type="NameFunction"></token>
+          <token type="Keyword" />
+          <token type="TextWhitespace" />
+          <token type="NameFunction" />
         </bygroups>
       </rule>
       <rule pattern="(\$?\w+)(\s*)(=|\+=|-=|\*=|/=|\+\+=)">
         <bygroups>
-          <token type="NameVariable"></token>
-          <token type="TextWhitespace"></token>
-          <token type="Operator"></token>
+          <token type="NameVariable" />
+          <token type="TextWhitespace" />
+          <token type="Operator" />
         </bygroups>
       </rule>
       <rule pattern="\$\w+">
-        <token type="NameVariable"></token>
+        <token type="NameVariable" />
       </rule>
-      <rule pattern="\$"" push="interpolated_string">
-        <token type="LiteralStringDouble"></token>
+      <rule pattern="\$&quot;" push="interpolated_string">
+        <token type="LiteralStringDouble" />
       </rule>
       <rule pattern="--\w+(-\w+)*">
-        <token type="NameAttribute"></token>
+        <token type="NameAttribute" />
       </rule>
       <rule pattern="-\w">
-        <token type="NameAttribute"></token>
+        <token type="NameAttribute" />
       </rule>
-      <rule pattern="==|!=|<=|>=|<|>">
-        <token type="Operator"></token>
+      <rule pattern="==|!=|&lt;=|&gt;=|&lt;|&gt;">
+        <token type="Operator" />
       </rule>
       <rule pattern="\+|-|\*|/|%|\*\*">
-        <token type="Operator"></token>
+        <token type="Operator" />
       </rule>
       <rule pattern="and|or|not|in">
-        <token type="Operator"></token>
+        <token type="Operator" />
       </rule>
       <rule pattern="=~|!~|like|not-like">
-        <token type="Operator"></token>
+        <token type="Operator" />
       </rule>
-      <rule pattern="&&|\|\|">
-        <token type="Operator"></token>
+      <rule pattern="&amp;&amp;|\|\|">
+        <token type="Operator" />
       </rule>
-      <rule pattern="o>|out>|e>|err>|e\+o>|err\+out>|o\+e>|out\+err>">
-        <token type="Operator"></token>
+      <rule
+        pattern="o&gt;|out&gt;|e&gt;|err&gt;|e\+o&gt;|err\+out&gt;|o\+e&gt;|out\+err&gt;"
+      >
+        <token type="Operator" />
       </rule>
-      <rule pattern="o>>|out>>|e>>|err>>|e\+o>>|err\+out>>|o\+e>>|out\+err>>">
-        <token type="Operator"></token>
+      <rule
+        pattern="o&gt;&gt;|out&gt;&gt;|e&gt;&gt;|err&gt;&gt;|e\+o&gt;&gt;|err\+out&gt;&gt;|o\+e&gt;&gt;|out\+err&gt;&gt;"
+      >
+        <token type="Operator" />
       </rule>
-      <rule pattern="e>\||err>\||e\+o>\||err\+out>\||o\+e>\||out\+err>\|">
-        <token type="Operator"></token>
+      <rule
+        pattern="e&gt;\||err&gt;\||e\+o&gt;\||err\+out&gt;\||o\+e&gt;\||out\+err&gt;\|"
+      >
+        <token type="Operator" />
       </rule>
-      <rule pattern="\.\.=?|\.\.<?">
-        <token type="Operator"></token>
+      <rule pattern="\.\.=?|\.\.&lt;?">
+        <token type="Operator" />
       </rule>
       <rule pattern="\|">
-        <token type="Operator"></token>
+        <token type="Operator" />
       </rule>
       <rule pattern="=>">
-        <token type="Operator"></token>
+        <token type="Operator" />
       </rule>
       <rule pattern="[\[\]{}()]">
-        <token type="Punctuation"></token>
+        <token type="Punctuation" />
       </rule>
       <rule pattern="[,;]">
-        <token type="PunctuationSpecial"></token>
+        <token type="Punctuation" />
       </rule>
       <rule pattern="\.\.\.">
-        <token type="PunctuationSpecial"></token>
+        <token type="Punctuation" />
       </rule>
       <rule pattern="[@:]">
-        <token type="PunctuationSpecial"></token>
+        <token type="Punctuation" />
       </rule>
       <rule pattern="->">
-        <token type="PunctuationSpecial"></token>
+        <token type="Punctuation" />
       </rule>
     </state>
     <state name="data">
       <rule pattern="0x[0-9a-fA-F]+">
-        <token type="LiteralNumber"></token>
+        <token type="LiteralNumber" />
       </rule>
       <rule pattern="0b[01]+">
-        <token type="LiteralNumber"></token>
+        <token type="LiteralNumber" />
       </rule>
       <rule pattern="0o[0-7]+">
-        <token type="LiteralNumber"></token>
+        <token type="LiteralNumber" />
       </rule>
       <rule pattern="\d+(\.\d+)?([eE][+-]?\d+)?">
-        <token type="LiteralNumber"></token>
+        <token type="LiteralNumber" />
       </rule>
       <rule pattern="\d+(\.\d+)?(ns|us|ms|sec|min|hr|day|wk)">
-        <token type="LiteralNumber"></token>
+        <token type="LiteralNumber" />
       </rule>
-      <rule pattern="\d+(\.\d+)?(B|KB|MB|GB|TB|PB|EB|ZB|YB|KiB|MiB|GiB|TiB|PiB|EiB|ZiB|YiB)">
-        <token type="LiteralNumber"></token>
+      <rule
+        pattern="\d+(\.\d+)?(B|KB|MB|GB|TB|PB|EB|ZB|YB|KiB|MiB|GiB|TiB|PiB|EiB|ZiB|YiB)"
+      >
+        <token type="LiteralNumber" />
       </rule>
-      <rule pattern="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})">
-        <token type="LiteralNumber"></token>
+      <rule
+        pattern="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})"
+      >
+        <token type="LiteralNumber" />
       </rule>
       <rule pattern="\d{4}-\d{2}-\d{2}">
-        <token type="LiteralNumber"></token>
+        <token type="LiteralNumber" />
       </rule>
-      <rule pattern="r#"[^"]*"#">
-        <token type="LiteralString"></token>
+      <rule pattern="r#&quot;[^&quot;]*&quot;#">
+        <token type="LiteralString" />
       </rule>
       <rule pattern="r'[^']*'">
-        <token type="LiteralString"></token>
+        <token type="LiteralString" />
       </rule>
-      <rule pattern=""([^"\\]|\\.)*"">
-        <token type="LiteralStringDouble"></token>
+      <rule pattern="&quot;([^&quot;\\]|\\.)*&quot;">
+        <token type="LiteralStringDouble" />
       </rule>
       <rule pattern="'([^'\\]|\\.)*'">
-        <token type="LiteralStringSingle"></token>
+        <token type="LiteralStringSingle" />
       </rule>
-      <rule pattern="\\[\\'"nrt0$]">
-        <token type="LiteralStringEscape"></token>
+      <rule pattern="\\[\\\'&quot;nrt0$]">
+        <token type="LiteralStringEscape" />
       </rule>
       <rule pattern="\\x[0-9a-fA-F]{2}">
-        <token type="LiteralStringEscape"></token>
+        <token type="LiteralStringEscape" />
       </rule>
       <rule pattern="\\u\{[0-9a-fA-F]+\}">
-        <token type="LiteralStringEscape"></token>
+        <token type="LiteralStringEscape" />
       </rule>
       <rule pattern="\s+">
-        <token type="TextWhitespace"></token>
+        <token type="TextWhitespace" />
       </rule>
-      <rule pattern="[^\s\[\]{}()$"'`\\<>&|;#]+">
-        <token type="Text"></token>
+      <rule pattern="[^\s\[\]{}()$&quot;'`\\&lt;&gt;&amp;|;#]+">
+        <token type="Text" />
       </rule>
     </state>
     <state name="interpolated_string">
-      <rule pattern=""" pop="1">
-        <token type="LiteralStringDouble"></token>
+      <rule pattern="&quot;" pop="1">
+        <token type="LiteralStringDouble" />
       </rule>
       <rule pattern="\(" push="interpolation">
-        <token type="LiteralStringInterpol"></token>
+        <token type="LiteralStringInterpol" />
       </rule>
-      <rule pattern="([^"\\(]|\\.)+">
-        <token type="LiteralStringDouble"></token>
+      <rule pattern="([^&quot;\\(]|\\.)+">
+        <token type="LiteralStringDouble" />
       </rule>
     </state>
     <state name="interpolation">
       <rule pattern="\)" pop="1">
-        <token type="LiteralStringInterpol"></token>
+        <token type="LiteralStringInterpol" />
       </rule>
-      <rule include="root"></rule>
+      <rule include="root" />
     </state>
   </rules>
 </lexer>

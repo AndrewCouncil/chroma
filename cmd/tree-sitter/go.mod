@@ -15,5 +15,7 @@ require (
 
 require (
 	github.com/dlclark/regexp2 v1.11.5 // indirect
+	github.com/nushell/tree-sitter-nu v0.0.0-20250716021349-6544c4383643 // indirect
+	github.com/smacker/go-tree-sitter v0.0.0-20240827094217-dd81d9e9be82 // indirect
 	golang.org/x/sys v0.29.0 // indirect
 )
